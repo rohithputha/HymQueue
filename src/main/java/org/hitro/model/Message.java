@@ -1,10 +1,9 @@
-package org.example.model;
+package org.hitro.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.example.model.metadatas.MessageMetadata;
-import org.example.model.metadatas.interfaces.MessageMetadataIf;
-import org.example.services.HashService;
+import org.hitro.model.metadatas.MessageMetadata;
+import org.hitro.model.metadatas.interfaces.MessageMetadataIf;
+import org.hitro.services.HashService;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Set;

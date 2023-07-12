@@ -1,9 +1,9 @@
-package org.example.model.metadatas;
+package org.hitro.model.metadatas;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.example.model.metadatas.interfaces.ChannelMetadataIf;
-import org.example.model.metadatas.interfaces.ChannelType;
+import org.hitro.model.metadatas.interfaces.ChannelMetadataIf;
+import org.hitro.model.metadatas.interfaces.ChannelType;
 
 @Getter
 @AllArgsConstructor

@@ -1,4 +1,4 @@
-package org.example.model.metadatas.interfaces;
+package org.hitro.model.metadatas.interfaces;
 
 import java.util.List;
 

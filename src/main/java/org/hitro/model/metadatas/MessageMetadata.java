@@ -1,7 +1,7 @@
-package org.example.model.metadatas;
+package org.hitro.model.metadatas;
 
 import lombok.*;
-import org.example.model.metadatas.interfaces.MessageMetadataIf;
+import org.hitro.model.metadatas.interfaces.MessageMetadataIf;
 
 import java.util.Set;
 

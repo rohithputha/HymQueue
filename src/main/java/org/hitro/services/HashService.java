@@ -1,4 +1,4 @@
-package org.example.services;
+package org.hitro.services;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;

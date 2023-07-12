@@ -1,4 +1,4 @@
-package org.example.exceptions;
+package org.hitro.exceptions;
 
 import lombok.Getter;
 import lombok.ToString;

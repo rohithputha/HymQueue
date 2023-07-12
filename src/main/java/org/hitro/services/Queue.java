@@ -1,8 +1,8 @@
-package org.example.services;
+package org.hitro.services;
 
-import org.example.exceptions.HymQueueException;
-import org.example.model.Channel;
-import org.example.model.Message;
+import org.hitro.exceptions.HymQueueException;
+import org.hitro.model.Channel;
+import org.hitro.model.Message;
 
 import java.util.HashSet;
 import java.util.Map;

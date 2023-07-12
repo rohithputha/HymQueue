@@ -1,10 +1,10 @@
-package org.example.model;
+package org.hitro.model;
 
 import lombok.Getter;
-import org.example.model.metadatas.ChannelMetadata;
-import org.example.model.metadatas.interfaces.ChannelMetadataIf;
-import org.example.model.metadatas.interfaces.ChannelType;
-import org.example.services.HashService;
+import org.hitro.model.metadatas.ChannelMetadata;
+import org.hitro.model.metadatas.interfaces.ChannelMetadataIf;
+import org.hitro.model.metadatas.interfaces.ChannelType;
+import org.hitro.services.HashService;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.LinkedList;
