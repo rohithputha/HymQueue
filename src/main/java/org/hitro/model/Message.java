@@ -14,6 +14,9 @@ public class Message<T> {
     private T data;
     private MessageMetadataIf messageMetadata;
 
+    public HymOutput<T,Class> getData(){
+        return new HymOutput<>(data, data.getClass());
+    }
     public Message(T messageData, String publisherId, Set<String> tags,String channelId){
         try{
             HashService hashService = new HashService();

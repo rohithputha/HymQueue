@@ -19,7 +19,7 @@ public class HymQueueException extends RuntimeException{
     }
 
     public HymQueueException(String message){
-        super(new RuntimeException());
+        super(new RuntimeException(message));
         this.message = message;
     }
 
