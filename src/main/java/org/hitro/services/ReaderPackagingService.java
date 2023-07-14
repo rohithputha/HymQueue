@@ -23,7 +23,7 @@ public class ReaderPackagingService implements Runnable{
     public void run() {
         synchronized(chQ){
             do{
-                Iterator setItertator = subscriberSet.iterator();
+//                Iterator setItertator = subscriberSet.iterator();
                 while(chQ.size()==0){
                     try {
                         chQ.wait();
@@ -32,8 +32,8 @@ public class ReaderPackagingService implements Runnable{
                     }
                 }
                 Message newMessage = chQ.poll();
-                while(setItertator.hasNext()){
-                        SubscriberMessagePackage subscriberMessagePackage = new SubscriberMessagePackage((Subscriber) setItertator.next(),chQ.poll());
+                for(Subscriber subscriber: subscriberSet){
+                        SubscriberMessagePackage subscriberMessagePackage = new SubscriberMessagePackage(subscriber,chQ.poll());
                         outputQueue.offer(subscriberMessagePackage);
                     }
             }while(chQ.size()>0);

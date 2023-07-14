@@ -1,10 +1,10 @@
 package org.hitro.services;
 
 import org.hitro.exceptions.HymQueueException;
-import org.hitro.model.PollChannel;
-import org.hitro.model.Message;
-import org.hitro.model.HymOutput;
+import org.hitro.model.*;
+import org.hitro.model.interfaces.Channel;
 import org.hitro.model.interfaces.SubscriberFunction;
+import org.hitro.model.metadatas.interfaces.ChannelType;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -12,14 +12,20 @@ import java.util.Map;
 
 public class HymQueue {
 
-    private Map<String, PollChannel> channelMap;
+    private Map<String, Channel> channelMap;
     public HymQueue(){
         this.channelMap = new HashMap<>();
     }
 
-    public synchronized boolean createChannel(String name){
+    public synchronized boolean createChannel(String name, ChannelType channelType){
+        // ideally should be factory method and factory pattern
         if(!channelMap.containsKey(name)){
-            channelMap.put(name,new PollChannel(name));
+            if(channelType == ChannelType.POLL){
+                channelMap.put(name,new PollChannel(name));
+            }
+            else if(channelType == ChannelType.PUBSUB){
+                channelMap.put(name, new PubSubChannel(name));
+            }
             return true;
         }
         throw new HymQueueException("Channel with the same name already exists");
@@ -27,7 +33,7 @@ public class HymQueue {
 
     public <T> boolean add(T data, String channelName,String publisherId){
         try {
-            Message newMessage = new Message(data, publisherId, new HashSet<>(), this.channelMap.get(channelName).getChannelMetadata().getId());
+            Message newMessage = new Message(data, publisherId, new HashSet<>(), this.channelMap.get(channelName).getMetadata().getId());
             this.channelMap.get(channelName).add(newMessage);
             return true;
         }
@@ -50,6 +56,24 @@ public class HymQueue {
         }
     }
     public void addSubscriber(String channelName, SubscriberFunction subscriberFunction){
-//        this.channelMap.get(channelName).ad
+       Channel storedChannel = this.channelMap.get(channelName);
+       PubSubChannel pubSubChannel = null;
+       if(storedChannel == null){
+           throw new NullPointerException("Map does not contain the channel name");
+       }
+       if(storedChannel.getMetadata().getChannelType() == ChannelType.PUBSUB){
+           pubSubChannel = (PubSubChannel) storedChannel;
+       }
+       if(pubSubChannel==null){
+           throw new NullPointerException("Request channel does not support subscribers");
+       }
+
+       //** we should have a metadata field for subscriber as well...
+       pubSubChannel.addSubscriber(new Subscriber(subscriberFunction));
+    }
+
+    public SubscriberMessagePackage getSubscriberMessagePackage(String channelName){
+        PubSubChannel pubSubChannel = (PubSubChannel) channelMap.get(channelName);
+        return pubSubChannel.get();
     }
 }
