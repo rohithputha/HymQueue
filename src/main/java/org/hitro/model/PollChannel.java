@@ -11,10 +11,10 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 @Getter
-public class Channel {
+public class PollChannel {
     private Queue<Message> chQ;
     private ChannelMetadataIf channelMetadata;
-    public Channel(String name){
+    public PollChannel(String name){
         try {
             HashService hashService = new HashService();
             chQ = new LinkedList<>();
