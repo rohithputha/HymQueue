@@ -1,6 +1,7 @@
 package org.hitro.services;
 
 import org.hitro.exceptions.HymQueueException;
+import org.hitro.model.CommonPackageQueue;
 import org.hitro.model.Message;
 import org.hitro.model.Subscriber;
 import org.hitro.model.SubscriberMessagePackage;
@@ -13,11 +14,12 @@ public class ReaderPackagingService implements Runnable{
 
     private volatile Set<Subscriber> subscriberSet;
     private volatile Queue<Message> chQ;
-    private volatile Queue<SubscriberMessagePackage> outputQueue;
-    public ReaderPackagingService(Set<Subscriber> subscriberSet, Queue<Message> chQ, Queue<SubscriberMessagePackage> outputQueue){
+
+    private volatile CommonPackageQueue commonPackageQueue;
+    public ReaderPackagingService(Set<Subscriber> subscriberSet, Queue<Message> chQ){
         this.subscriberSet = subscriberSet;
         this.chQ =  chQ;
-        this.outputQueue = outputQueue;
+        this.commonPackageQueue = CommonPackageQueue.getInstance();
     }
     @Override
     public void run() {
@@ -33,10 +35,10 @@ public class ReaderPackagingService implements Runnable{
                 }
                 Message newMessage = chQ.poll();
                 for(Subscriber subscriber: subscriberSet){
-                        SubscriberMessagePackage subscriberMessagePackage = new SubscriberMessagePackage(subscriber,chQ.poll());
-                        outputQueue.offer(subscriberMessagePackage);
+                        SubscriberMessagePackage subscriberMessagePackage = new SubscriberMessagePackage(subscriber,newMessage);
+                        this.commonPackageQueue.add(subscriberMessagePackage);
                     }
-            }while(chQ.size()>0);
+            }while(true);
 
         }
     }

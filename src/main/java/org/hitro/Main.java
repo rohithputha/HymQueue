@@ -15,7 +15,7 @@ public class Main {
         System.out.println(hymQueue.get("hello"));
         System.out.println("--------");
         hymQueue.createChannel("testChannel2",ChannelType.PUBSUB);
-        hymQueue.addSubscriber("testChannel2", (HymOutput hymOutput)->System.out.println(hymQueue));
+        hymQueue.addSubscriber("testChannel2", (HymOutput hymOutput)->System.out.println("----"+hymOutput  ));
         hymQueue.add("sub data","testChannel2","123");
         Thread.sleep(1000);
         System.out.println(hymQueue.getSubscriberMessagePackage("testChannel2"));

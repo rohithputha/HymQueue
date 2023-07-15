@@ -32,7 +32,7 @@ public class PubSubChannel implements Channel {
             this.subscriberSet = new HashSet<>();
             this.packageQueue = new LinkedList<>();
             this.metadata = new ChannelMetadata(hashService.getHashVal(name),name, ChannelType.PUBSUB);
-            this.packagingService = new ReaderPackagingService(subscriberSet,chQ,packageQueue);
+            this.packagingService = new ReaderPackagingService(subscriberSet,chQ);
             Thread packagingThread = new Thread(packagingService);
             packagingThread.start();
         } catch (NoSuchAlgorithmException e) {

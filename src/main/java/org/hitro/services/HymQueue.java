@@ -15,6 +15,7 @@ public class HymQueue {
     private Map<String, Channel> channelMap;
     public HymQueue(){
         this.channelMap = new HashMap<>();
+        MessageDistributorService.assignExecutorTasks();
     }
 
     public synchronized boolean createChannel(String name, ChannelType channelType){
