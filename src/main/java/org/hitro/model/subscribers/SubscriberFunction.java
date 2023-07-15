@@ -1,7 +1,6 @@
-package org.hitro.model.interfaces;
+package org.hitro.model.subscribers;
 
-import org.hitro.model.HymOutput;
-import org.hitro.model.Message;
+import org.hitro.model.iodtos.HymOutput;
 
 @FunctionalInterface
 public interface SubscriberFunction {

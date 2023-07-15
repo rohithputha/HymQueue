@@ -1,10 +1,16 @@
-package org.hitro.services;
+package org.hitro;
 
 import org.hitro.exceptions.HymQueueException;
-import org.hitro.model.*;
-import org.hitro.model.interfaces.Channel;
-import org.hitro.model.interfaces.SubscriberFunction;
+import org.hitro.model.channels.PollChannel;
+import org.hitro.model.channels.PubSubChannel;
+import org.hitro.model.channels.Channel;
+import org.hitro.model.iodtos.HymOutput;
+import org.hitro.model.iodtos.Message;
+import org.hitro.model.subscribers.Subscriber;
+import org.hitro.model.subscribers.SubscriberFunction;
 import org.hitro.model.metadatas.interfaces.ChannelType;
+import org.hitro.model.subscribers.SubscriberMessagePackage;
+import org.hitro.services.messagesubscriberdistribution.MessageDistributorService;
 
 import java.util.HashMap;
 import java.util.HashSet;

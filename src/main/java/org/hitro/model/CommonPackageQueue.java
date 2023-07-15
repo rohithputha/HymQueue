@@ -1,7 +1,7 @@
 package org.hitro.model;
 
 import lombok.Getter;
-import org.hitro.model.SubscriberMessagePackage;
+import org.hitro.model.subscribers.SubscriberMessagePackage;
 
 import java.util.LinkedList;
 import java.util.Queue;

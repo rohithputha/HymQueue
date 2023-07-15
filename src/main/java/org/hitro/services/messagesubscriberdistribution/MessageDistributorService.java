@@ -1,10 +1,9 @@
-package org.hitro.services;
+package org.hitro.services.messagesubscriberdistribution;
 
 import org.hitro.model.CommonPackageQueue;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
 
 
 public class MessageDistributorService {

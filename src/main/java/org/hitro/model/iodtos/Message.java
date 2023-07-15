@@ -1,4 +1,4 @@
-package org.hitro.model;
+package org.hitro.model.iodtos;
 
 import lombok.Getter;
 import org.hitro.model.metadatas.MessageMetadata;
