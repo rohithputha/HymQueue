@@ -1,7 +1,7 @@
-package org.hitro.model;
+package org.hitro.model.channels;
 
 import lombok.Getter;
-import org.hitro.model.interfaces.Channel;
+import org.hitro.model.iodtos.Message;
 import org.hitro.model.metadatas.ChannelMetadata;
 import org.hitro.model.metadatas.interfaces.ChannelMetadataIf;
 import org.hitro.model.metadatas.interfaces.ChannelType;

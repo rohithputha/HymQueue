@@ -2,11 +2,10 @@ package org.hitro.services;
 
 import org.hitro.exceptions.HymQueueException;
 import org.hitro.model.CommonPackageQueue;
-import org.hitro.model.Message;
-import org.hitro.model.Subscriber;
-import org.hitro.model.SubscriberMessagePackage;
+import org.hitro.model.iodtos.Message;
+import org.hitro.model.subscribers.Subscriber;
+import org.hitro.model.subscribers.SubscriberMessagePackage;
 
-import java.util.Iterator;
 import java.util.Queue;
 import java.util.Set;
 

@@ -1,12 +1,13 @@
-package org.hitro.model;
+package org.hitro.model.channels;
 
 import lombok.Getter;
-import org.hitro.model.interfaces.Channel;
+import org.hitro.model.iodtos.Message;
+import org.hitro.model.subscribers.Subscriber;
+import org.hitro.model.subscribers.SubscriberMessagePackage;
 import org.hitro.model.metadatas.ChannelMetadata;
 import org.hitro.model.metadatas.interfaces.ChannelMetadataIf;
 import org.hitro.model.metadatas.interfaces.ChannelType;
 import org.hitro.services.HashService;
-import org.hitro.services.HymQueue;
 import org.hitro.services.ReaderPackagingService;
 
 import java.security.NoSuchAlgorithmException;

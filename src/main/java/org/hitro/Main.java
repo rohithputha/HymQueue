@@ -1,8 +1,7 @@
 package org.hitro;
 
-import org.hitro.model.HymOutput;
+import org.hitro.model.iodtos.HymOutput;
 import org.hitro.model.metadatas.interfaces.ChannelType;
-import org.hitro.services.HymQueue;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {

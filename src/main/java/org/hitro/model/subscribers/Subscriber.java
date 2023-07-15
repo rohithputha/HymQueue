@@ -1,8 +1,8 @@
-package org.hitro.model;
+package org.hitro.model.subscribers;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.hitro.model.interfaces.SubscriberFunction;
+import org.hitro.model.subscribers.SubscriberFunction;
 
 @AllArgsConstructor
 @Getter

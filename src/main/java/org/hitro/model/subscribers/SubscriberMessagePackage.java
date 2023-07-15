@@ -1,7 +1,8 @@
-package org.hitro.model;
+package org.hitro.model.subscribers;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.hitro.model.iodtos.Message;
 
 @AllArgsConstructor
 @Getter

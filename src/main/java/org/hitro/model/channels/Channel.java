@@ -1,7 +1,6 @@
-package org.hitro.model.interfaces;
+package org.hitro.model.channels;
 
-import org.hitro.model.HymOutput;
-import org.hitro.model.Message;
+import org.hitro.model.iodtos.Message;
 import org.hitro.model.metadatas.interfaces.ChannelMetadataIf;
 
 public interface Channel {

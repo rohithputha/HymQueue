@@ -1,6 +1,6 @@
-package org.hitro.services;
+package org.hitro.services.messagesubscriberdistribution;
 
-import org.hitro.model.SubscriberMessagePackage;
+import org.hitro.model.subscribers.SubscriberMessagePackage;
 
 import java.util.Queue;
 
