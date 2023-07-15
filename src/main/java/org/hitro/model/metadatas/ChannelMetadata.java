@@ -3,7 +3,7 @@ package org.hitro.model.metadatas;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.hitro.model.metadatas.interfaces.ChannelMetadataIf;
-import org.hitro.model.metadatas.interfaces.ChannelType;
+import org.hitro.publicinterfaces.ChannelType;
 
 @Getter
 @AllArgsConstructor

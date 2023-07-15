@@ -1,7 +1,8 @@
 package org.hitro;
 
-import org.hitro.model.iodtos.HymOutput;
-import org.hitro.model.metadatas.interfaces.ChannelType;
+import org.hitro.publicinterfaces.HymOutput;
+import org.hitro.publicinterfaces.ChannelType;
+import org.hitro.publicinterfaces.HymQueue;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
@@ -14,9 +15,9 @@ public class Main {
         System.out.println(hymQueue.get("hello"));
         System.out.println("--------");
         hymQueue.createChannel("testChannel2",ChannelType.PUBSUB);
-        hymQueue.addSubscriber("testChannel2", (HymOutput hymOutput)->System.out.println("----"+hymOutput  ));
+        hymQueue.addSubscriber("123435","testChannel2", (HymOutput hymOutput)->System.out.println("----"+hymOutput  ));
         hymQueue.add("sub data","testChannel2","123");
         Thread.sleep(1000);
-        System.out.println(hymQueue.getSubscriberMessagePackage("testChannel2"));
+
     }
 }

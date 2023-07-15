@@ -3,7 +3,6 @@ package org.hitro.exceptions;
 import lombok.Getter;
 import lombok.ToString;
 
-
 @Getter
 @ToString
 public class HymQueueException extends RuntimeException{

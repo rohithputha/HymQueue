@@ -6,11 +6,10 @@ import org.hitro.model.subscribers.Subscriber;
 import org.hitro.model.subscribers.SubscriberMessagePackage;
 import org.hitro.model.metadatas.ChannelMetadata;
 import org.hitro.model.metadatas.interfaces.ChannelMetadataIf;
-import org.hitro.model.metadatas.interfaces.ChannelType;
+import org.hitro.publicinterfaces.ChannelType;
 import org.hitro.services.HashService;
 import org.hitro.services.ReaderPackagingService;
 
-import java.security.NoSuchAlgorithmException;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -22,29 +21,24 @@ public class PubSubChannel implements Channel {
     private volatile Set<Subscriber> subscriberSet;
 
     private volatile Queue<SubscriberMessagePackage> packageQueue;
-    private HashService hashService;
     private ReaderPackagingService packagingService;
     @Getter
     private ChannelMetadataIf metadata;
-    public PubSubChannel(String name){
-        try {
-            hashService =  new HashService();
+    private  PubSubChannel(ChannelMetadataIf channelMetadata){
             this.chQ = new LinkedList<>();
             this.subscriberSet = new HashSet<>();
             this.packageQueue = new LinkedList<>();
-            this.metadata = new ChannelMetadata(hashService.getHashVal(name),name, ChannelType.PUBSUB);
+            this.metadata = channelMetadata;
             this.packagingService = new ReaderPackagingService(subscriberSet,chQ);
             Thread packagingThread = new Thread(packagingService);
             packagingThread.start();
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
     }
-
     public boolean add(Message message){
-        this.chQ.offer(message);
-        this.packagingService.wakeThread();
-        return true;
+        synchronized (this.chQ){
+            this.chQ.offer(message);
+            this.packagingService.wakeThread();
+            return true;
+        }
     }
 
     public boolean addSubscriber(Subscriber subscriber){
@@ -52,10 +46,14 @@ public class PubSubChannel implements Channel {
         return true;
     }
 
-    public SubscriberMessagePackage get(){
-        return this.packageQueue.poll();
-    }
     public Message next(){
-        return null;
+        synchronized (this.chQ){
+            return this.chQ.peek();
+        }
+    }
+
+    public static PubSubChannel getInstance(String name){
+        ChannelMetadataIf channelMetadata = new ChannelMetadata(HashService.getInstance().getHashVal(name),name, ChannelType.PUBSUB);
+        return new PubSubChannel(channelMetadata);
     }
 }

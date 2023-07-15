@@ -1,4 +1,4 @@
-package org.hitro.model.iodtos;
+package org.hitro.publicinterfaces;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

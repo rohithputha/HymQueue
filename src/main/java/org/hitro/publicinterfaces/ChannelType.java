@@ -1,4 +1,4 @@
-package org.hitro.model.metadatas.interfaces;
+package org.hitro.publicinterfaces;
 
 public enum ChannelType {
      POLL,

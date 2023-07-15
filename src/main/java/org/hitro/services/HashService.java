@@ -1,12 +1,14 @@
 package org.hitro.services;
 
+import org.hitro.exceptions.HymQueueException;
+
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class HashService {
     private MessageDigest md;
-    public HashService() throws NoSuchAlgorithmException {
+    private HashService() throws NoSuchAlgorithmException {
         this.md = MessageDigest.getInstance("SHA-1");
     }
     public String getHashVal(String input){
@@ -17,5 +19,17 @@ public class HashService {
             initHash.insert(0,"0");
         }
         return initHash.toString();
+    }
+    private static HashService hashService;
+    public synchronized static HashService getInstance(){
+        if(hashService == null){
+            try{
+                hashService = new HashService();
+            }
+            catch (Exception e){
+                throw new HymQueueException("Hash algorithm not found.",e);
+            }
+        }
+        return hashService;
     }
 }
