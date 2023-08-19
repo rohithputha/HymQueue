@@ -6,7 +6,7 @@ import lombok.ToString;
 @Getter
 @ToString
 public class HymQueueException extends RuntimeException{
-
+    // need some serious re-design...
     private String message;
     public HymQueueException(Exception e){
         super(e);
@@ -21,5 +21,4 @@ public class HymQueueException extends RuntimeException{
         super(new RuntimeException(message));
         this.message = message;
     }
-
 }

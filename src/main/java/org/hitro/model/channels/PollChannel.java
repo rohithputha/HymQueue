@@ -27,7 +27,7 @@ public class PollChannel implements Channel {
     }
 
     public static PollChannel getInstance(String name){
-        ChannelMetadataIf channelMetadata = new ChannelMetadata(HashService.getInstance().getHashVal(name),name, ChannelType.POLL );
+        ChannelMetadataIf channelMetadata = new ChannelMetadata(HashService.getInstance().getHashVal(name),name, ChannelType.POLL);
         return new PollChannel(channelMetadata);
     }
 }
